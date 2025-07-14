@@ -21,18 +21,21 @@ await dispatch(getOtherUserThunk())
     await dispatch(logOutrUserThunk())
       
   }
-console.log(otherUser)
+
   useEffect(()=>{
+//error hai yahaek min call karta hua
+
     if(!searchvalue){
-      setuser(otherUser)
+  setuser(otherUser)
     }else{
-      setuser( otherUser?.filter((user) => {
+    setuser( otherUser?.filter((user) => {
      return (
-      user.username.toLowerCase().includes(searchvalue.toLowerCase()) ||
-      user.fullName.toLowerCase().includes(searchvalue.toLowerCase()) )
+      user?.username.toLowerCase().includes(searchvalue.toLowerCase()) ||
+      user?.fullName.toLowerCase().includes(searchvalue.toLowerCase()) )
     }) )
     } 
-  },[searchvalue])
+ 
+  },[searchvalue,otherUser])
   return (
     <>
       <div className="w-[20rem] h-screen flex flex-col">

@@ -8,13 +8,21 @@ import {
   setOnlineUser,
 } from "../../store/slice/scoket/scoket.slic";
 import { setnewMessage } from "../../store/slice/messsage/message.slic";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const { isAuthenticated, userProfile } = useSelector(
     (state) => state.userReducer
   );
 
   const { socket, onlineUser } = useSelector((state) => state.scoketreducer);
+
+
+
+  // if(! isAuthenticated){
+  //   navigate("/login")
+  // }
 
   useEffect(() => {
     if (!isAuthenticated) return;
@@ -25,7 +33,7 @@ const Home = () => {
   useEffect(() => {
 
 
-    // if  (!socket) return;
+    if  (!socket) return;
    
 
     socket.on("userOnline", (onlineUser) => {

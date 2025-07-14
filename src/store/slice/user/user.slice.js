@@ -30,7 +30,6 @@ export const UserSlice=createSlice({
     })
      builder.addCase(LoginUserThunk.fulfilled,(state,actions)=>{
             state.isAuthenticated=true
-   
         state.buttonloading=false
     
         state.screenLoading=false
@@ -100,7 +99,7 @@ export const UserSlice=createSlice({
 
 
     builder.addCase(GetprogileUser.pending,(state,actions)=>{
-        state.isAuthenticated=true
+        // state.isAuthenticated=true
         // state.screenLoading=false
         // actions.payload?.response?.data?.errmessage
     })
