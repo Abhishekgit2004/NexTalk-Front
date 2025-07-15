@@ -9,6 +9,7 @@ import {
 } from "../../store/slice/scoket/scoket.slic";
 import { setnewMessage } from "../../store/slice/messsage/message.slic";
 import { useNavigate } from "react-router-dom";
+// import { setSelectedUser } from "../../store/slice/user/user.slice";
 const Home = () => {
   const navigate=useNavigate()
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Home = () => {
   );
 
   const { socket, onlineUser } = useSelector((state) => state.scoketreducer);
-
+  const {selectedUser}=useSelector((state=>state.userReducer))
 
 
   // if(! isAuthenticated){
@@ -52,7 +53,7 @@ const Home = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <MessageContainer />
+   <MessageContainer  />
     </div>
   );
 };

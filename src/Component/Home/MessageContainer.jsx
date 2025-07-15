@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { User } from './User'
 import Massage from './Massage'
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,14 +22,18 @@ useEffect(()=>{
   return (
     <>{
     !selectedUser?(
-      <> <h1>pls selec user</h1></>
+      <> 
+      <div className='hidden sm:flex flex-col items-center w-full justify-center '>
+        <h1 className='text-2xl font-semibold'>welcome to nexttalk</h1>
+      <p className='text-xl'>please select user</p>
+      </div></>
     ):(
 
- <div className='h-screen w-full flex flex-col'>
+ <div className='h-screen w-full hidden- flex-col'>
         <div className='p-3 border-b'>
             <User otherDatils={selectedUser} />
         </div>
-        <div className='overflow-y-scroll h-full   '>
+        <div className='overflow-y-scroll h-[77.5%]   '>
           {
             message?.map((messageDetails)=>(
                  <Massage key={messageDetails?._id} messageDetails={messageDetails}/>

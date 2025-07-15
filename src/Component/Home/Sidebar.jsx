@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { User } from "./User";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ export const Sidebar = () => {
 let dispatch=useDispatch()
 let [searchvalue,setsearchvalue]=useState('')
 let [user,setuser]=useState([])
-const {otherUser,userProfile}=useSelector(state=>state.userReducer)
+const {otherUser,userProfile,selectedUser}=useSelector(state=>state.userReducer)
 
 
 useEffect(()=>{
@@ -21,6 +21,7 @@ await dispatch(getOtherUserThunk())
     await dispatch(logOutrUserThunk())
       
   }
+  console.log(selectedUser)
 
   useEffect(()=>{
 //error hai yahaek min call karta hua
@@ -38,7 +39,8 @@ await dispatch(getOtherUserThunk())
   },[searchvalue,otherUser])
   return (
     <>
-      <div className="w-[20rem] h-screen flex flex-col">
+      <div className={`w-full h-screen  flex ${selectedUser?"hidden":""} sm:flex  sm:w-[20rem] flex-col `} >
+      
         <div className="bg-black h-[3rem] mx-3 rounded-box flex items-center mt-2">
           <h1 className="text-[#8688fa] p-3">NexTalk</h1>
         </div>
@@ -48,7 +50,7 @@ await dispatch(getOtherUserThunk())
             <input type="search" onChange={(e)=>setsearchvalue(e.target.value)} className="grow" placeholder="Search" />
           </label>
         </div>
-        <div className="h-full overflow-y-scroll flex gap-3 p-2 flex-col ">
+        <div className={`h-full overflow-y-scroll flex gap-3 p-2 flex-col  ` }>
          {
           user?.map(otherDatils=>(
             <User  key={otherDatils?._id} otherDatils={otherDatils} />

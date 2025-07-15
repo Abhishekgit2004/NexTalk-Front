@@ -30,9 +30,9 @@ if(messageRef.current){
   <div className="chat-header gap-2">
 
     {/* <time className="text-xs opacity-50">{messageDetails?.updatedAt
-}</time> */}
+}</time> */}                                                      
   </div>
-  <div className="chat-bubble">{messageDetails?.messages}</div>
+  <div className="chat-bubble">{messageDetails?.messages} </div>
 </div>
 <div className="chat chat-end">
   <div className="chat-image avatar">
