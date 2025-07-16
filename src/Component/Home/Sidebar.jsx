@@ -21,7 +21,7 @@ await dispatch(getOtherUserThunk())
     await dispatch(logOutrUserThunk())
       
   }
-  console.log(selectedUser)
+  
 
   useEffect(()=>{
 //error hai yahaek min call karta hua
