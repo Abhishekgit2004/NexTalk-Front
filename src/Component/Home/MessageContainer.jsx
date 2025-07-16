@@ -15,7 +15,7 @@ export const MessageContainer = () => {
     localStorage.setItem('firstTimeUserSelected', 'true');
     window.location.reload();
   }
-}, []);
+}, [selectedUser]);
   
 useEffect(()=>{
   if(selectedUser?._id) {
