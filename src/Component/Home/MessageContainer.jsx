@@ -10,7 +10,12 @@ export const MessageContainer = () => {
   
   const {selectedUser}=useSelector(state=>state.userReducer)
   const {message}=useSelector(state=>state.messagereducer)
-  
+  useEffect(() => {
+  if (selectedUser && !localStorage.getItem('firstTimeUserSelected')) {
+    localStorage.setItem('firstTimeUserSelected', 'true');
+    window.location.reload();
+  }
+}, []);
   
 useEffect(()=>{
   if(selectedUser?._id) {
@@ -19,6 +24,8 @@ useEffect(()=>{
   }
  
   },[selectedUser])
+
+  
   return (
     <>{
     !selectedUser?(
